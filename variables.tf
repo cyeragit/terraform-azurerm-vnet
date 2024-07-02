@@ -115,10 +115,20 @@ variable "tracing_tags_prefix" {
   default     = "avm_"
   description = "Default prefix for generated tracing tags"
   nullable    = false
+
 }
 
 variable "vnet_name" {
   type        = string
   default     = "acctvnet"
   description = "Name of the vnet to create"
+}
+
+variable "encryption_enforcement" {
+  type = string
+  validation {
+    condition     = can(regex("^(DropUnencrypted|AllowUnencrypted)$", var.encryption_enforcement))
+    error_message = "encryption_enforcement must be either 'DropUnencrypted' or 'AllowUnencrypted'"
+  }
+  default = "AllowUnencrypted"
 }

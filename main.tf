@@ -24,6 +24,10 @@ resource "azurerm_virtual_network" "vnet" {
       id     = ddos_protection_plan.value.id
     }
   }
+
+  encryption {
+    enforcement = var.encryption_enforcement
+  }
 }
 
 moved {
