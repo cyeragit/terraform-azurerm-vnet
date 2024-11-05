@@ -25,8 +25,11 @@ resource "azurerm_virtual_network" "vnet" {
     }
   }
 
-  encryption {
-    enforcement = var.encryption_enforcement
+  dynamic "encryption" {
+    for_each = var.encrypt_vnet ? [1] : []
+    content {
+      enforcement = var.encryption_enforcement
+    }
   }
 }
 

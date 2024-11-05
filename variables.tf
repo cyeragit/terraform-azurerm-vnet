@@ -124,6 +124,12 @@ variable "vnet_name" {
   description = "Name of the vnet to create"
 }
 
+variable "encrypt_vnet" {
+  type        = bool
+  default     = false
+  description = "Encrypt the vnet"
+}
+
 variable "encryption_enforcement" {
   type = string
   validation {
